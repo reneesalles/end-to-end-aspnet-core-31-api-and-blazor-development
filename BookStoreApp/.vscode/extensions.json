@@ -1,0 +1,23 @@
+{
+    "recommendations": [
+        // Visual
+        "PKief.material-icon-theme",
+        "zhuangtongfa.material-theme",
+        "vscode-icons-team.vscode-icons",
+        // C# and Dotnet
+        "ms-dotnettools.csharp",
+        "adrianwilczynski.asp-net-core-switcher",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-dotnettools.blazorwasm-companion",
+        "adrianwilczynski.libman",
+        "patcx.vscode-nuget-gallery",
+        // SQL Server
+        "ms-mssql.mssql",
+        // REST client
+        "rangav.vscode-thunder-client",
+        // Markdown
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-emoji",
+        "bierner.markdown-preview-github-styles",
+    ]
+}

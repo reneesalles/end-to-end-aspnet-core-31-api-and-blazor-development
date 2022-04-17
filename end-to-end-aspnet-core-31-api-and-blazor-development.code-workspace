@@ -1,0 +1,29 @@
+{
+    "folders": [
+        {
+            "name": "root",
+            "path": "."
+        },
+        {
+            "name": "BookStoreApp Solution",
+            "path": "./BookStoreApp"
+        }
+    ],
+    "settings": {
+        "editor.bracketPairColorization.enabled": true,
+        // OmniSharp
+        "omnisharp.useModernNet": true,
+        "omnisharp.defaultLaunchSolution": "BookStoreApp/BookStoreApp.sln",
+        "omnisharp.organizeImportsOnFormat": true,
+        // Ignore Files
+        "files.exclude": {
+            "**/bin": true,
+            "**/obj": true,
+        },
+        // Files Nesting
+        "explorer.experimental.fileNesting.enabled": true,
+        "explorer.experimental.fileNesting.patterns": {
+            "*.json": "$(capture).json, $(capture).*.json"
+        }
+    }
+}
