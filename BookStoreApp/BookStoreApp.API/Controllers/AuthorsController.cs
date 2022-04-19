@@ -35,8 +35,9 @@ namespace BookStoreApp.API.Controllers
         {
             try
             {
-                var authors = await _context.Authors.ToListAsync();
-                var authorsDto = _mapper.Map<IEnumerable<AuthorReadDTO>>(authors);
+                var authorsDto = await _context.Authors
+                    .ProjectTo<AuthorReadDTO>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
                 return Ok(authorsDto);
             }
             catch (Exception ex)
@@ -52,15 +53,16 @@ namespace BookStoreApp.API.Controllers
         {
             try
             {
-                var author = await _context.Authors.FindAsync(id);
+                var authorDto = await _context.Authors
+                    .ProjectTo<AuthorReadDTO>(_mapper.ConfigurationProvider)
+                    .FirstOrDefaultAsync(q => q.Id == id);
 
-                if (author == null)
+                if (authorDto == null)
                 {
                     _logger.LogWarning($"Record not found - {nameof(GetAuthor)} - {nameof(id)}:{id}");
                     return NotFound();
                 }
 
-                var authorDto = _mapper.Map<AuthorReadDTO>(author);
                 return Ok(authorDto);
             }
             catch (Exception ex)
