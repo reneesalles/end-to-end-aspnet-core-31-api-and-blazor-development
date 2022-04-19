@@ -15,3 +15,4 @@
 
 - [How to Create DB (and Tables) on SQL Server](Resources/how-to-create-db-with-sql.md)
 - [How to Create DbContext](Resources/how-to-create-dbcontext.md)
+- [How to Scaffold Controller](Resources/how-to-scaffold-controller.md)
