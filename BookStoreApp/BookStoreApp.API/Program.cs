@@ -1,5 +1,6 @@
 using BookStoreApp.API.Configurations;
 using BookStoreApp.API.Data;
+using BookStoreApp.API.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -11,7 +12,7 @@ var connString = builder.Configuration.GetConnectionString("BookStoreAppDbConnec
 builder.Services.AddDbContext<BookStoreDbContext>(options => options.UseSqlServer(connString));
 
 builder.Services
-    .AddIdentityCore<IdentityUser>()                    // what class represents User
+    .AddIdentityCore<ApiUser>()                         // what class represents User
     .AddRoles<IdentityRole>()                           // what class represents User's Role
     .AddEntityFrameworkStores<BookStoreDbContext>();    // where to store the Data
 
