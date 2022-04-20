@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/BookStoreApp.API/bin/Debug/net6.0/BookStoreApp.API.dll",
+            "program": "${workspaceFolder}/BookStoreApp/BookStoreApp.API/bin/Debug/net6.0/BookStoreApp.API.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/BookStoreApp.API",
+            "cwd": "${workspaceFolder}/BookStoreApp/BookStoreApp.API",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {

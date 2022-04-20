@@ -1,12 +1,7 @@
 {
     "folders": [
         {
-            "name": "root",
             "path": "."
-        },
-        {
-            "name": "BookStoreApp Solution",
-            "path": "./BookStoreApp"
         }
     ],
     "settings": {
@@ -23,7 +18,8 @@
         // Files Nesting
         "explorer.experimental.fileNesting.enabled": true,
         "explorer.experimental.fileNesting.patterns": {
-            "*.json": "$(capture).json, $(capture).*.json"
+            "*.json": "$(capture).json, $(capture).*.json",
+            "*.cs": "$(capture).cs, $(capture).*.cs",
         }
     }
 }
