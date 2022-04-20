@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using BookStoreApp.API.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using BookStoreApp.API.Data.Models;
 
 namespace BookStoreApp.API.Data
 {
-    public partial class BookStoreDbContext : DbContext
+    public partial class BookStoreDbContext : IdentityDbContext
     {
         public BookStoreDbContext()
         {
@@ -22,6 +23,8 @@ namespace BookStoreApp.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder); //needed for Identity stuff
+
             modelBuilder.Entity<Book>(entity =>
             {
                 entity.HasOne(d => d.Author)
