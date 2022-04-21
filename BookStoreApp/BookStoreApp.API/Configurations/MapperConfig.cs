@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BookStoreApp.API.Data.DTOs.Author;
 using BookStoreApp.API.Data.DTOs.Book;
+using BookStoreApp.API.Data.DTOs.User;
 using BookStoreApp.API.Data.Models;
 
 namespace BookStoreApp.API.Configurations
@@ -13,8 +14,14 @@ namespace BookStoreApp.API.Configurations
     {
         public MapperConfig()
         {
+            MapUserDTOs();
+
             MapAuthorDTOs();
             MapBookDTOs();
+        }
+
+        private void MapUserDTOs() {
+            CreateMap<ApiUser, UserRegisterDTO>().ReverseMap();
         }
 
         private void MapAuthorDTOs()
