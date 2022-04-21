@@ -17,3 +17,4 @@
 - [How to Create DbContext](Resources/how-to-create-dbcontext.md)
 - [How to Scaffold Controller](Resources/how-to-scaffold-controller.md)
 - [How to Scaffold Identity](Resources/how-to-scaffold-identity.md)
+- [How to Manage User Secrets](Resources/how-to-manage-user-secrets.md)
