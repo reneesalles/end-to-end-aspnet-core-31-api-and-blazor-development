@@ -20,6 +20,9 @@
         "explorer.experimental.fileNesting.patterns": {
             "*.json": "$(capture).json, $(capture).*.json",
             "*.cs": "$(capture).cs, $(capture).*.cs",
+            "*.cshtml": "$(capture).cshtml, $(capture).cshtml.*",
+            "*.razor": "$(capture).razor, $(capture).razor.*",
+            "*.css": "$(capture).css, $(capture).css.map"
         }
     }
 }
