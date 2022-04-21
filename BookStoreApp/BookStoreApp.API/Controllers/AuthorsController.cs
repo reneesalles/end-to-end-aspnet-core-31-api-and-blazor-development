@@ -43,7 +43,7 @@ namespace BookStoreApp.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error - {nameof(GetAuthors)}");
-                return StatusCode(500, Messages.Error500Message);
+                return Problem(Messages.Error500Message, statusCode: 500);
             }
         }
 
@@ -68,7 +68,7 @@ namespace BookStoreApp.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error - {nameof(GetAuthor)} - {nameof(id)}:{id}");
-                return StatusCode(500, Messages.Error500Message);
+                return Problem(Messages.Error500Message, statusCode: 500);
             }
         }
 
@@ -119,7 +119,7 @@ namespace BookStoreApp.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error - {nameof(PutAuthor)} - {nameof(id)}:{id}", authorDto);
-                return StatusCode(500, Messages.Error500Message);
+                return Problem(Messages.Error500Message, statusCode: 500);
             }
         }
 
@@ -140,7 +140,7 @@ namespace BookStoreApp.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error - {nameof(PostAuthor)}", authorDto);
-                return StatusCode(500, Messages.Error500Message);
+                return Problem(Messages.Error500Message, statusCode: 500);
             }
         }
 
@@ -165,7 +165,7 @@ namespace BookStoreApp.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error - {nameof(DeleteAuthor)} - {nameof(id)}:{id}");
-                return StatusCode(500, Messages.Error500Message);
+                return Problem(Messages.Error500Message, statusCode: 500);
             }
         }
 
