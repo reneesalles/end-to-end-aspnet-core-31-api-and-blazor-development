@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build BookStoreApp.API",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -14,7 +14,7 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish",
+            "label": "publish BookStoreApp.API",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -26,7 +26,7 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "watch",
+            "label": "watch BookStoreApp.API",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -34,6 +34,42 @@
                 "run",
                 "--project",
                 "${workspaceFolder}/BookStoreApp/BookStoreApp.API/BookStoreApp.API.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build BookStoreApp.Blazor.Server.UI",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/BookStoreApp/BookStoreApp.Blazor.Server.UI/BookStoreApp.Blazor.Server.UI.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish BookStoreApp.Blazor.Server.UI",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/BookStoreApp/BookStoreApp.Blazor.Server.UI/BookStoreApp.Blazor.Server.UI.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch BookStoreApp.Blazor.Server.UI",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/BookStoreApp/BookStoreApp.Blazor.Server.UI/BookStoreApp.Blazor.Server.UI.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
