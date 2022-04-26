@@ -19,6 +19,7 @@ namespace BookStoreApp.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
+    [ProducesResponseType(type: typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public class AuthController : ControllerBase
     {
         private readonly ILogger<AuthController> _logger;
@@ -36,6 +37,8 @@ namespace BookStoreApp.API.Controllers
 
         [HttpPost]
         [Route("register")]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register(UserRegisterDTO userDto)
         {
             try
@@ -54,8 +57,13 @@ namespace BookStoreApp.API.Controllers
                     return BadRequest(ModelState);
                 }
 
-                // every new user must have a "User" role
-                await _userManager.AddToRoleAsync(user, "User");
+                if (string.IsNullOrEmpty(userDto.Role))
+                {
+                    await _userManager.AddToRoleAsync(user, "User");
+                }
+                else {
+                    await _userManager.AddToRoleAsync(user, userDto.Role);
+                }
 
                 return Accepted();
             }
@@ -68,12 +76,18 @@ namespace BookStoreApp.API.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<UserAuthenticatedDTO>> Login(UserLoginDTO userDto) {
-            try {
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<UserAuthenticatedDTO>> Login(UserLoginDTO userDto)
+        {
+            try
+            {
                 var user = await _userManager.FindByEmailAsync(userDto.Email);
 
-                if (user == null || !await _userManager.CheckPasswordAsync(user, userDto.Password)) {
-                    if(user == null)
+                if (user == null || !await _userManager.CheckPasswordAsync(user, userDto.Password))
+                {
+                    if (user == null)
                         _logger.LogWarning($"Record not found - {nameof(Login)}", userDto);
                     return Unauthorized(userDto);
                 }

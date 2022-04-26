@@ -13,5 +13,7 @@ namespace BookStoreApp.API.Data.DTOs.User
         public string FirstName { get; set; } = null!;
         [Required]
         public string LastName { get; set; } = null!;
+        [Required]
+        public string Role { get; set; } = null!;
     }
 }
