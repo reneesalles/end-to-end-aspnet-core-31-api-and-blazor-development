@@ -5,6 +5,8 @@
 
 <PageTitle>Register new User</PageTitle>
 
+<h3>Register new User</h3>
+
 @if (!string.IsNullOrEmpty(message))
 {
     <div class="alert alert-danger">
@@ -12,7 +14,7 @@
     </div>
 }
 
-<div class="card-body">
+<div>
     <EditForm Model="RegisterModel" OnValidSubmit="HandleRegistration">
         <DataAnnotationsValidator />
         <ValidationSummary />
@@ -62,7 +64,7 @@
         }
         catch (ApiException ex)
         {
-            message = ex.Message;
+            message = ex.Response;
         }
         catch (Exception ex)
         {
