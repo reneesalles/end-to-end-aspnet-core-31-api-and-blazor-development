@@ -14,6 +14,7 @@ builder.Services.AddHttpClient<IBookStoreClient, BookStoreClient>(options =>
 
 builder.Services
     .AddBlazoredLocalStorage()
+    .AddScoped<ApiAuthenticationStateProvider>()
     .AddScoped<AuthenticationStateProvider>(p => 
         p.GetRequiredService<ApiAuthenticationStateProvider>())
     .AddScoped<IAuthenticationService, AuthenticationService>();

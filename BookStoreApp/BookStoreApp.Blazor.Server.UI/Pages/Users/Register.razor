@@ -16,59 +16,70 @@
 
 <div>
     <EditForm Model="RegisterModel" OnValidSubmit="HandleRegistration">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+        <fieldset disabled="@IsDisabled">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
 
-        <div class="form-group">
-            <label for="email">Email Adress</label>
-            <InputText id="email" class="form-control" type="email" @bind-Value="RegisterModel.Email" />
-            <ValidationMessage For="@(() => RegisterModel.Email)" />
-        </div>
+            <div class="form-group">
+                <label for="email">Email Adress</label>
+                <InputText id="email" class="form-control" type="email" @bind-Value="RegisterModel.Email" />
+                <ValidationMessage For="@(() => RegisterModel.Email)" />
+            </div>
 
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <InputText id="firstName" class="form-control" @bind-Value="RegisterModel.FirstName" />
-            <ValidationMessage For="@(() => RegisterModel.FirstName)" />
-        </div>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <InputText id="firstName" class="form-control" @bind-Value="RegisterModel.FirstName" />
+                <ValidationMessage For="@(() => RegisterModel.FirstName)" />
+            </div>
 
-        <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <InputText id="lastName" class="form-control" @bind-Value="RegisterModel.LastName" />
-            <ValidationMessage For="@(() => RegisterModel.LastName)" />
-        </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <InputText id="lastName" class="form-control" @bind-Value="RegisterModel.LastName" />
+                <ValidationMessage For="@(() => RegisterModel.LastName)" />
+            </div>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <InputText id="password" class="form-control" type="password" @bind-Value="RegisterModel.Password" />
-            <ValidationMessage For="@(() => RegisterModel.Password)" />
-        </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <InputText id="password" class="form-control" type="password" @bind-Value="RegisterModel.Password" />
+                <ValidationMessage For="@(() => RegisterModel.Password)" />
+            </div>
 
-        <br/>
+            <br />
 
-        <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </fieldset>
     </EditForm>
 </div>
 
 @code {
-    UserRegisterDTO RegisterModel = new() {
+    UserRegisterDTO RegisterModel = new()
+    {
         Role = "User"
     };
+    bool IsDisabled = false;
     string message = string.Empty;
 
     private async Task HandleRegistration()
     {
         try
         {
+            message = string.Empty;
+            IsDisabled = true;
+
             await _bookStoreClient.RegisterAsync(RegisterModel);
             _navManager.NavigateTo("/users/login");
         }
         catch (ApiException ex)
         {
-            message = ex.Response;
+            message = !string.IsNullOrEmpty(ex.Response) ? ex.Response : ex.Message;
         }
         catch (Exception ex)
         {
             message = ex.Message;
+        }
+        finally
+        {
+            IsDisabled = false;
         }
     }
 }

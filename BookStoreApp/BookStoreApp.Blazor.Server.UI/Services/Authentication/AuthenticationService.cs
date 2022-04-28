@@ -31,5 +31,11 @@ namespace BookStoreApp.Blazor.Server.UI.Services.Authentication
 
             return true;
         }
+
+        public async Task Logout()
+        {
+            //Change auth state of app
+            await ((ApiAuthenticationStateProvider)_authenticationStateProvider).LoggedOut();
+        }
     }
 }
